@@ -1,10 +1,13 @@
 def schet():
+    sohr = open ('summ.txt', 'w')
     schet = 0
     history = {}
+
 
     def schet_pop(schet, popolnenie):
         schet += int(popolnenie)
         return schet
+
 
     def sum_pok(schet, history, money):
         money = int(money)
@@ -15,9 +18,11 @@ def schet():
             print('Недостаточно средств')
         return schet, history
 
+
     def sum_obsh(history):
         for i, p in history.items():
             print(f'{i} --> {p}')
+
 
     while True:
         print('1. пополнение счета')
@@ -36,6 +41,8 @@ def schet():
             sum_obsh(history)
             pass
         elif choice == '4':
+            schetSTR = str(schet)
+            sohr.write(schetSTR)
             break
         else:
             print('Неверный пункт меню')

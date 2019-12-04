@@ -1,6 +1,7 @@
 import os
 import shutil
 import platform
+import json
 
 def create_dir():
    dir_true = input('Введите имя создаваемой директории:')
@@ -38,6 +39,20 @@ def show_dir_file():
    myfiles = [f for f in os.listdir(os.getcwd()) if os.path.isfile(f)]
    print(myfiles)
 
+def create_file():
+   list_dir = 'listdir.txt'
+   with open(list_dir, 'w') as g:
+      z_files = get_files()
+      z_dirs = get_dirs()
+      zapis = {'files: ': z_files, 'dirs: ': z_dirs}
+      json.dump(zapis, g)
+
+def get_files():
+   return [x for x in os.listdir(os.getcwd()) if os.path.isfile(x)]
+
+def get_dirs():
+   return[x for x in os.listdir(os.getcwd()) if not os.path.isfile(x)]
+
 def show_dir_pap():
    mypap = [f for f in os.listdir(os.getcwd()) if os.path.isdir(f)]
    print(mypap)
@@ -48,5 +63,5 @@ def os_inf():
    print(y, x)
 
 def me():
-   print('Raccoon, greatest pythoneer of the century')
+   return 'Raccoon, greatest pythoneer of the century'
 
